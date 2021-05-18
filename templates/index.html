@@ -20,12 +20,12 @@
      <!-- Main Input For Receiving Query to our ML -->
     <form action="{{ url_for('predict')}}"method="post">
 
-<!--   
+ 
       <input type="text" name="enginesize" placeholder="Engine Size" required="required" />
       <input type="text" name="cylinders" placeholder="Cylinders" required="required" />
 		  <input type="text" name="fuel" placeholder="Fuel" required="required" />
--->
 
+<!--  
         <div class="form-group">
             <label for="upteainput">Choose JSON file</label>
             <input id="upteainput" name="upfile" type="file" class="form-control-file">
@@ -36,7 +36,7 @@
       <br>
         <button type="submit" class="btn">Predict</button>
     </form>
-
+-->
    <br>
    <br>
    {{ prediction_text }}
