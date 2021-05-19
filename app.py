@@ -12,7 +12,7 @@ model = pickle.load(open('model.pkl', 'rb'))
 def home():
     return render_template('index.html')
 
-@app.route('/processjson', methods = ['POST'])
+@app.route('/processjson', methods = ['PUT'])
 def processjson():
     data = request.get_json()
 
