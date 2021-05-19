@@ -26,6 +26,23 @@ def predict():
 
     return render_template('index.html', prediction_text='CO2 Emission of the vehicle is :{}'.format(output))
 
+@app.route('/processjson', methods = ['POST'])
+def processjson():
+    data = request.get_json()
+
+    # pull the inputs
+    enginesize = data['enginesize']
+    cylinders = data['cylinders']
+    fuel = data['fuel']
+
+    # get the prediction
+    int_features = [enginesize, cylinders, fuel]
+    final_features = [np.array(int_features)]
+    prediction = model.predict(final_features)
+
+    
+    return jsonify({'result' : 'Success!', 'enginesize': enginesize, 'cylinders': cylinders, 'fuel':fuel, 'prediction': int(prediction)})
+
 
 
 if __name__ == "__main__":
