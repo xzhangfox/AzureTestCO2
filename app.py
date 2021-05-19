@@ -18,18 +18,7 @@ def predict():
     '''
     For rendering results on HTML GUI
     '''
-    int_features = [float(x) for x in request.form.values()]
-    final_features = [np.array(int_features)]
-    prediction = model.predict(final_features)
-
-    output = round(prediction[0], 2)
-
-    return render_template('index.html', prediction_text='CO2 Emission of the vehicle is :{}'.format(output))
-
-@app.route('/processjson', methods = ['POST'])
-def processjson():
     data = request.get_json()
-
     # pull the inputs
     enginesize = data['enginesize']
     cylinders = data['cylinders']
@@ -40,8 +29,10 @@ def processjson():
     final_features = [np.array(int_features)]
     prediction = model.predict(final_features)
 
-    
-    return jsonify({'result' : 'Success!', 'enginesize': enginesize, 'cylinders': cylinders, 'fuel':fuel, 'prediction': int(prediction)})
+    output = jsonify({'result' : 'Success!', 'enginesize': enginesize, 'cylinders': cylinders, 'fuel':fuel, 'prediction': int(prediction)})
+
+    return output
+
 
 
 
